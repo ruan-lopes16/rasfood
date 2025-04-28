@@ -50,7 +50,7 @@ public class Prato {
         this.descricao = descricao;
     }
 
-    public boolean isDisponivel() {
+    public boolean isDisponivel(boolean b) {
         return disponivel;
     }
 
