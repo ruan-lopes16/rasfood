@@ -22,7 +22,7 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>2.3.232</version>
-            <scope>test</scope>
+            <!-- versoes mais recente não utilizam o -> `<scope>test</scope>` -->
         </dependency>
     </dependencies>
 
