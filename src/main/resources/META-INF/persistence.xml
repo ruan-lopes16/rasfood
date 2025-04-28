@@ -9,6 +9,8 @@
             <property name="javax.persistence.jdbc.user" value="rasmoo"/> <!-- usuário -->
             <property name="javax.persistence.jdbc.password" value=""/> <!-- senha -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/> <!-- dialeto da tecnologia sql que está usando (palavras-chave)-->
+            <property name="hibernate.show_sql" value="true"/> <!-- ver as queries geradas -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/> <!-- persistir os dados -->
         </properties>
     </persistence-unit>
 </persistence>
