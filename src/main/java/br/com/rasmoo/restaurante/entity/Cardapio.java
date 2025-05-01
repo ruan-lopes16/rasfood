@@ -5,8 +5,8 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "pratos")
-public class Prato {
+@Table(name = "cardapio")
+public class Cardapio {
 
     @Id // dizendo que o atributo é um id + definindo primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)     // estrategia de geração de id -> h2 não aceita SEQUENCE (essa notação faz gerar id's: 1, 2, 3, 4...)
@@ -22,7 +22,7 @@ public class Prato {
     private LocalDateTime dataDeRegistro = LocalDateTime.now();     // deixando data já registrada
 
     // JPA obriga ter um construtor vazio
-    public Prato() {
+    public Cardapio() {
     }
 
     // getters e setters

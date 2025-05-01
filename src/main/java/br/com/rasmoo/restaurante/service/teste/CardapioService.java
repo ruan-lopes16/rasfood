@@ -1,7 +1,7 @@
 package br.com.rasmoo.restaurante.service.teste;
 
-import br.com.rasmoo.restaurante.dao.PratoDao;
-import br.com.rasmoo.restaurante.entity.Prato;
+import br.com.rasmoo.restaurante.dao.CardapioDao;
+import br.com.rasmoo.restaurante.entity.Cardapio;
 import br.com.rasmoo.restaurante.util.JPAUtil;
 
 import javax.persistence.EntityManager;
@@ -9,11 +9,11 @@ import javax.persistence.EntityManager;
 // import javax.persistence.Persistence;
 import java.math.BigDecimal;
 
-public class PratoService {
+public class CardapioService {
     public static void main(String[] args) {
 
         // 1. Criando um novo prato
-        Prato risoto = new Prato();
+        Cardapio risoto = new Cardapio();
 
         // informações/atributos de risoto
         risoto.setNome("Risoto de frutos do mar");
@@ -22,7 +22,7 @@ public class PratoService {
         risoto.setValor(BigDecimal.valueOf(88.50));
         // risoto.setDataDeRegistro(); -> nesse caso não é preciso, já fica automático
 
-        Prato salmao = new Prato();
+        Cardapio salmao = new Cardapio();
         salmao.setNome("Salmão ao molho de maracujá");
         salmao.setDescricao("Salmão grelhado ao molho de maracujá");
         salmao.isDisponivel(true);
@@ -39,30 +39,30 @@ public class PratoService {
 
         // Criamos um DAO para gerenciar a persistência de Prato.
         // Passamos o EntityManager para ele usar nos métodos (como cadastrar()).
-        PratoDao pratoDao = new PratoDao(entityManager);
+        CardapioDao cardapioDao = new CardapioDao(entityManager);
 
         // 4. Iniciando a transação - caminhando para TRANSIENT
         entityManager.getTransaction().begin();
 
         // 5. Salvando (persistindo) o objeto no banco - MANAGED
-        pratoDao.cadastrar(risoto); // id 1
+        cardapioDao.cadastrar(risoto); // id 1
         entityManager.flush();
-        pratoDao.cadastrar(salmao); // id 2
+        cardapioDao.cadastrar(salmao); // id 2
         entityManager.flush();
 
         // consultando prato
-        System.out.println("O prato consultado foi: " + pratoDao.consultar(1));
+        System.out.println("O prato consultado foi: " + cardapioDao.consultar(1));
 
         // excluindo prato + tentativa de consulta
-        pratoDao.excluir(salmao);
-        System.out.println("O prato consultado foi: " + pratoDao.consultar(2)); // null, por conta da exclusão
+        cardapioDao.excluir(salmao);
+        System.out.println("O prato consultado foi: " + cardapioDao.consultar(2)); // null, por conta da exclusão
 
         entityManager.clear(); // removendo objetos gerenciados pelo EntityManager
 
         // atualizando risoto
         risoto.setValor(BigDecimal.valueOf(75.50));
-        pratoDao.atualizar(risoto);
-        System.out.println("O prato consultado foi: " + pratoDao.consultar(1));
+        cardapioDao.atualizar(risoto);
+        System.out.println("O prato consultado foi: " + cardapioDao.consultar(1));
 
 
         /*
