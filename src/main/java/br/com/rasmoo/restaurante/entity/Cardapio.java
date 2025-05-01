@@ -17,6 +17,9 @@ public class Cardapio {
     private boolean disponivel;
     private BigDecimal valor;   // BigDecimal -> utilizado para cálculos decimais de precisão
 
+    // criando categoria
+    private Categoria categoria;
+
     // renomeando uma tabela ex.: dataDeRegistro para data_de_registro
     @Column(name = "data_de_registro")
     private LocalDateTime dataDeRegistro = LocalDateTime.now();     // deixando data já registrada
