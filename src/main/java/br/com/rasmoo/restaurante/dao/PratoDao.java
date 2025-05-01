@@ -27,7 +27,7 @@ public class PratoDao {
     public void cadastrar(final Prato prato){
         this.entityManager.persist(prato);
         // log
-        System.out.println("Entidade cadastrada: " + prato);
+        // System.out.println("Entidade cadastrada: " + prato);
     }
 
     // buscando por id da entidade

@@ -22,6 +22,13 @@ public class PratoService {
         risoto.setValor(BigDecimal.valueOf(88.50));
         // risoto.setDataDeRegistro(); -> nesse caso não é preciso, já fica automático
 
+        Prato salmao = new Prato();
+        salmao.setNome("Salmão ao molho de maracujá");
+        salmao.setDescricao("Salmão grelhado ao molho de maracujá");
+        salmao.isDisponivel(true);
+        salmao.setValor(BigDecimal.valueOf(60.00));
+
+
         // EntityManager -> interface JPA que faze o gerenciamento de entidade
         // EntityManagerFactory -> interface JPA que implementa padrão de projeto
 
@@ -38,10 +45,33 @@ public class PratoService {
         entityManager.getTransaction().begin();
 
         // 5. Salvando (persistindo) o objeto no banco - MANAGED
-        pratoDao.cadastrar(risoto);
+        pratoDao.cadastrar(risoto); // id 1
+        entityManager.flush();
+        pratoDao.cadastrar(salmao); // id 2
+        entityManager.flush();
 
-        // 6. Confirmando (commit) a transação - sincronizando com o banco de dados - MANAGED
+        // consultando prato
+        System.out.println("O prato consultado foi: " + pratoDao.consultar(1));
+
+        // excluindo prato + tentativa de consulta
+        pratoDao.excluir(salmao);
+        System.out.println("O prato consultado foi: " + pratoDao.consultar(2)); // null, por conta da exclusão
+
+        entityManager.clear(); // removendo objetos gerenciados pelo EntityManager
+
+        // atualizando risoto
+        risoto.setValor(BigDecimal.valueOf(75.50));
+        pratoDao.atualizar(risoto);
+        System.out.println("O prato consultado foi: " + pratoDao.consultar(1));
+
+
+        /*
+        6. Confirmando (commit) a transação - sincronizando com o banco de dados - MANAGED
+        Agora será o método flush a cada interação como o banco de dados
+
         entityManager.getTransaction().commit();
+         */
+
 
         // 7. Encerrando o gerenciador de entidades - DETACHED
         entityManager.close();
