@@ -17,7 +17,16 @@ public class Cardapio {
     private boolean disponivel;
     private BigDecimal valor;   // BigDecimal -> utilizado para cálculos decimais de precisão
 
+    /* Relacionamentos
+
+    - ManyToOne
+    - ManyToMany
+    - OneToMany
+    - OneToOne
+     */
+
     // criando categoria
+    @ManyToOne
     private Categoria categoria;
 
     // renomeando uma tabela ex.: dataDeRegistro para data_de_registro
@@ -26,6 +35,15 @@ public class Cardapio {
 
     // JPA obriga ter um construtor vazio
     public Cardapio() {
+    }
+
+    public Cardapio(String nome, String descricao, boolean disponivel, BigDecimal valor, Categoria categoria, LocalDateTime dataDeRegistro) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.disponivel = disponivel;
+        this.valor = valor;
+        this.categoria = categoria;
+        this.dataDeRegistro = dataDeRegistro;
     }
 
     // getters e setters
@@ -77,15 +95,25 @@ public class Cardapio {
         this.dataDeRegistro = dataDeRegistro;
     }
 
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
     // toString - exibição
+
     @Override
     public String toString() {
-        return "Prato{" +
+        return "Cardapio{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", disponivel=" + disponivel +
-                ", valor=R$" + valor +
+                ", valor=" + valor +
+                ", categoria=" + categoria +
                 ", dataDeRegistro=" + dataDeRegistro +
                 '}';
     }

@@ -15,6 +15,10 @@ public class Categoria {
     public Categoria() {
     }
 
+    public Categoria(String nome) {
+        this.nome = nome;
+    }
+
     // getters e setters
     public Integer getId() {
         return id;
