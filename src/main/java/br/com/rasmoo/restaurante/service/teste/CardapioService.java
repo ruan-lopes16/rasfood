@@ -60,8 +60,10 @@ public class CardapioService {
         entityManager.flush();
 
         // consultando prato
-        System.out.println("O prato consultado foi: " + cardapioDao.consultar(1));
-        System.out.println("O prato consultado foi: " + cardapioDao.consultar(2));
+//        System.out.println("O prato consultado foi: " + cardapioDao.consultarPorId(1));
+//        System.out.println("O prato consultado foi: " + cardapioDao.consultarPorId(2));
+        // exibindo todos elementos cadastrados
+        cardapioDao.consultarTodos().forEach(elemento -> System.out.println("O prato selecionado foi: " + elemento));
 
         // 4. Encerrando o gerenciador de entidades - DETACHED
         entityManager.close();

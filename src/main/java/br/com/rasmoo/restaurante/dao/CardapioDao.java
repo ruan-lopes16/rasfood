@@ -3,6 +3,7 @@ package br.com.rasmoo.restaurante.dao;
 import br.com.rasmoo.restaurante.entity.Cardapio;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 public class CardapioDao {
     // atributo
@@ -15,10 +16,15 @@ public class CardapioDao {
         this.entityManager = entityManager;
     }
 
+    public List<Cardapio> consultarTodos() {
+        String sql = "SELECT c FROM Cardapio c";
+        return this.entityManager.createQuery(sql, Cardapio.class).getResultList();
+    }
+
     /*
     CRUD
     C = CREATE -> cadastrar()
-    R = READ -> consultar()
+    R = READ -> consultarPorId()
     U = UPDATE -> atualizar()
     D = DELETE -> excluir()
      */
@@ -30,7 +36,7 @@ public class CardapioDao {
     }
 
     // buscando por id da entidade
-    public Cardapio consultar(final Integer id){
+    public Cardapio consultarPorId(final Integer id){
         return this.entityManager.find(Cardapio.class, id); // procura no banco de dados um objeto da classe Prato com o ID fornecido (entidade + chave primaria)
     }
 
