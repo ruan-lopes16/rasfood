@@ -30,14 +30,37 @@ public class CardapioDao {
         return this.entityManager.find(Cardapio.class, id);
     }
 
+    public Cardapio consultarPorNome(final String filtro) {
+        try {
+            String jpql = "SELECT c FROM Cardapio c WHERE LOWER(c.nome) = LOWER(:nome)";
+            return this.entityManager
+                    .createQuery(jpql, Cardapio.class)
+                    .setParameter("nome", filtro)
+                    .getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
+
+    }
+
     public List<Cardapio> consultarPorValor(final BigDecimal filtro){
-        String jpql = "SELECT c FROM Cardapio c WHERE c.valor = : valor";
-        return this.entityManager.createQuery(jpql, Cardapio.class).setParameter("valor", filtro).getResultList();
+        try {
+            String jpql = "SELECT c FROM Cardapio c WHERE c.valor = : valor";
+            return this.entityManager.createQuery(jpql, Cardapio.class).setParameter("valor", filtro).getResultList();
+        } catch (Exception e) {
+            return null;
+        }
+
     }
 
     public List<Cardapio> consultarTodos(){
-        String jpql = "SELECT c FROM Cardapio c";
-        return this.entityManager.createQuery(jpql, Cardapio.class).getResultList();
+        try {
+            String jpql = "SELECT c FROM Cardapio c";
+            return this.entityManager.createQuery(jpql, Cardapio.class).getResultList();
+        } catch (Exception e) {
+            return null;
+        }
+
     }
 
     public void atualizar(final Cardapio cardapio){
