@@ -16,15 +16,15 @@ public class Ordem {
     private BigDecimal valorTotal;
 
     @Column(name = "data_de_criacao")
-    private LocalDateTime dataDeCriacao;
+    private LocalDateTime dataDeCriacao = LocalDateTime.now();
 
     @ManyToOne
     private Cliente cliente;
 
-    public Ordem(Integer id, BigDecimal valorTotal, LocalDateTime dataDeCriacao, Cliente cliente) {
-        this.id = id;
-        this.valorTotal = valorTotal;
-        this.dataDeCriacao = dataDeCriacao;
+    @ManyToMany
+    private Cardapio cardapio;
+
+    public Ordem(Cliente cliente) {
         this.cliente = cliente;
     }
 
