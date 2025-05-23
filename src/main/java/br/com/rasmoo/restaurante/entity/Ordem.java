@@ -22,14 +22,15 @@ public class Ordem {
     @ManyToOne
     private Cliente cliente;
 
-    @ManyToMany
-    @JoinTable( // adicionando nova tabela
-            name = "ordens_cardapio", // nome dessa nova tabela
-            joinColumns = @JoinColumn(name = "ordens_id"),
-            inverseJoinColumns = @JoinColumn(name = "cardapio_id")
-    ) // tabela de junção
+//    @ManyToMany
+//    @JoinTable( // adicionando nova tabela
+//            name = "ordens_cardapio", // nome dessa nova tabela
+//            joinColumns = @JoinColumn(name = "ordens_id"),
+//            inverseJoinColumns = @JoinColumn(name = "cardapio_id")
+//    ) // tabela de junção
 
-    private List<Cardapio> cardapioList;
+    @OneToMany
+    private List<OrdensCardapio> ordensCardapioList;
 
     public Ordem(Cliente cliente) {
         this.cliente = cliente;

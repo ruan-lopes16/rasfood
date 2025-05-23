@@ -30,8 +30,8 @@ public class Cardapio {
     @ManyToOne
     private Categoria categoria;
 
-    @ManyToMany(mappedBy = "cardapioList")
-    private List<Ordem> ordemList;
+//    @ManyToMany(mappedBy = "cardapioList")    -> não existe mais esse relacionamento
+//    private List<Ordem> ordemList;
 
     // renomeando uma tabela ex.: dataDeRegistro para data_de_registro
     @Column(name = "data_de_registro")
