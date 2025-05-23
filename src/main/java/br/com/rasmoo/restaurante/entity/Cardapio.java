@@ -3,6 +3,7 @@ package br.com.rasmoo.restaurante.entity;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "cardapio")
@@ -28,6 +29,9 @@ public class Cardapio {
     // criando categoria
     @ManyToOne
     private Categoria categoria;
+
+    @ManyToMany
+    private List<Ordem> ordemList;
 
     // renomeando uma tabela ex.: dataDeRegistro para data_de_registro
     @Column(name = "data_de_registro")
