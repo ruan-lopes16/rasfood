@@ -30,7 +30,7 @@ public class Cardapio {
     @ManyToOne
     private Categoria categoria;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "cardapioList")
     private List<Ordem> ordemList;
 
     // renomeando uma tabela ex.: dataDeRegistro para data_de_registro
