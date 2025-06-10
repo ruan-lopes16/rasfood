@@ -1,6 +1,8 @@
 package br.com.rasmoo.restaurante.service.test;
 
+import br.com.rasmoo.restaurante.dao.PratoDao;
 import br.com.rasmoo.restaurante.entity.Prato;
+import br.com.rasmoo.restaurante.util.JPAUtil;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -19,12 +21,20 @@ public class PratoService {
         // TRANSIENT
 
         // gerenciando entidade
+        /* ANTES
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("rasfood"); // criando interface para dar inicio à gerenciamento de entidades
         EntityManager entityManager = entityManagerFactory.createEntityManager(); // chamando interface JPA para gerenciar entidades
+        */
+        // com os Managers isolados(evitar repetição), fazemos:
+        EntityManager entityManager = JPAUtil.getEntityManagerRasfood();
 
         // iniciando transações -> "RESOURCE_LOCAL", diz que eu mesmo quem irá cuidar das transações/gerenciamento. "JTA" -> servidor de aplicação que irá gerenciar
+        PratoDao pratoDao = new PratoDao(entityManager);
         entityManager.getTransaction().begin(); // pega a transação e da um início à ela
-        entityManager.persist(risoto); // persistindo entidade -> TRANSIENT to MANAGED - JPA consegue gerenciar nossa entidade
+
+        // ANTES
+        // entityManager.persist(risoto); // persistindo entidade -> TRANSIENT to MANAGED - JPA consegue gerenciar nossa entidade
+        pratoDao.cadastrar(risoto);
 
         // atualizando banco de dados / sincronia
         entityManager.getTransaction().commit();
