@@ -16,6 +16,7 @@ public class Cardapio {
     private String descricao;
     private boolean disponivel;
     private BigDecimal valor;
+    private Categoria categoria;
 
     @Column(name = "data_de_registro")                                  // renomeando a tabela
     private LocalDateTime dataDeRegistro = LocalDateTime.now();         // dizendo que a data será ao instanciar
