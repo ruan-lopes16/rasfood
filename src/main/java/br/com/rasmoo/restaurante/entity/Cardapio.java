@@ -5,8 +5,8 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity                     // dizendo que está classe é uma entidade
-@Table(name = "pratos")     // "renomeando" a tabela
-public class Prato {
+@Table(name = "cardapio")     // "renomeando" a tabela
+public class Cardapio {
 
     @Id                                                         // dizendo ao JPA que o atributo id, é uma primary-key do tipo Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)         // estratégia de geração de Id -> auto-incremento a cada registro
@@ -21,7 +21,7 @@ public class Prato {
     private LocalDateTime dataDeRegistro = LocalDateTime.now();         // dizendo que a data será ao instanciar
 
 
-    public Prato(Integer id, String nome, String descricao, boolean disponivel, BigDecimal valor, LocalDateTime dataDeRegistro) {
+    public Cardapio(Integer id, String nome, String descricao, boolean disponivel, BigDecimal valor, LocalDateTime dataDeRegistro) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
@@ -30,7 +30,7 @@ public class Prato {
         this.dataDeRegistro = dataDeRegistro;
     }
 
-    public Prato() {
+    public Cardapio() {
         // JPA obriga ter um construtor vazio
     }
 
