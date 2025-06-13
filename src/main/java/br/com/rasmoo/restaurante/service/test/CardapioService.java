@@ -70,8 +70,9 @@ public class CardapioService {
         cardapioDao.cadastrar(salmao);
         entityManager.flush();
 
-        System.out.println("O prato consultado foi: " + cardapioDao.consultar(1));      // consultando prato cadastrado
-        System.out.println("O prato consultado foi: " + cardapioDao.consultar(2));      // consultando prato cadastrado
+        // System.out.println("O prato consultado foi: " + cardapioDao.consultarPorId(1));      // consultando prato cadastrado
+        // System.out.println("O prato consultado foi: " + cardapioDao.consultarPorId(2));      // consultando prato cadastrado
+        cardapioDao.consultarTodosElementos().forEach(prato -> System.out.println("O prato consultado foi: " + prato));
 
         // fechando transação -> MANAGED to DETACHED
         entityManager.close();      // troca de close para clear, para que funcione o merge

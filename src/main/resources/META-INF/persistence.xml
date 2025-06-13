@@ -10,7 +10,7 @@
             <property name="javax.persistence.jdbc.password" value="" /> <!-- senha -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/> <!-- dialeto -> serve para identificar as queries de cada tipo de banco, neste caso h2 -->
             <property name="hibernate.show_sql" value="true"/> <!-- visualização de logs -> queries que estão sendo criadas pelo JPA -->
-            <property name="hibernate.hbm2ddl.auto" value="update"/> <!-- persistencia de dados de forma automatica e consultar dados -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/> <!-- persistencia de dados de forma automatica e consultarPorId dados -->
         </properties>
     </persistence-unit>
 </persistence>
