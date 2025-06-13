@@ -16,14 +16,14 @@ public class Cardapio {
     private String descricao;
     private boolean disponivel;
     private BigDecimal valor;
+    @ManyToOne // relacionamento -> muitos para um - unidirecional -> de um lado para outro, de cardapio para categoria -> categoria nao tem conhecimento de cardapio
     private Categoria categoria;
 
     @Column(name = "data_de_registro")                                  // renomeando a tabela
     private LocalDateTime dataDeRegistro = LocalDateTime.now();         // dizendo que a data será ao instanciar
 
 
-    public Cardapio(Integer id, String nome, String descricao, boolean disponivel, BigDecimal valor, LocalDateTime dataDeRegistro) {
-        this.id = id;
+    public Cardapio(String nome, String descricao, boolean disponivel, BigDecimal valor, LocalDateTime dataDeRegistro) {
         this.nome = nome;
         this.descricao = descricao;
         this.disponivel = disponivel;
@@ -84,14 +84,23 @@ public class Cardapio {
         this.dataDeRegistro = dataDeRegistro;
     }
 
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
     @Override
     public String toString() {
-        return "Prato{" +
+        return "Cardapio{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", disponivel=" + disponivel +
                 ", valor=" + valor +
+                ", categoria=" + categoria +
                 ", dataDeRegistro=" + dataDeRegistro +
                 '}';
     }
