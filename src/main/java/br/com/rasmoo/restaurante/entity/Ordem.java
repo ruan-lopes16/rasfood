@@ -21,6 +21,14 @@ public class Ordem {
     @ManyToOne // muitos pedidos para um Cliente
     private Cliente cliente;
 
+    @ManyToMany     // muitos cardapio(itens) para muitas Ordens - todo toMany precisa estar vinculado à uma lista(List<> ou Set<>)
+    @JoinTable(     // tabela de junção entre ordem e cardapio (tabela intermediária) -> "casamento" entre Ordem e Cardapio
+            name = "ordens_cardapio",   // nome dessa tabela -> irá conter IDs de ordem e cardapio
+            joinColumns = @JoinColumn(name = "ordens_id"),   // coluna que representa a chave estrangeira da entidade Ordem -> faz referencia a entidade atual // nome do id que está vindo da tabela(@Table seguido de id) -> coluna da tabela que está sendo referenciada // chave estrangeira (foreign key) que aponta para o id da tabela Ordem.
+            inverseJoinColumns = @JoinColumn(name = "cardapio_id")    // coluna que representa a chave estrangeira da entidade Cardapio // tabela target - tabela que estamos linkando // foreign key que aponta para o id da tabela Cardapio.
+    )
+    private List<Cardapio> cardapioList;    // neste caso Cardapio precisa ter visão de Ordem // lista de itens do cardápio associados à essa ordem.
+
     public Ordem() {
     }
 

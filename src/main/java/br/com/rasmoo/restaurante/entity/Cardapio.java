@@ -3,6 +3,7 @@ package br.com.rasmoo.restaurante.entity;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity                     // dizendo que está classe é uma entidade
 @Table(name = "cardapio")     // "renomeando" a tabela
@@ -18,6 +19,10 @@ public class Cardapio {
     private BigDecimal valor;
     @ManyToOne // relacionamento -> muitos para um - unidirecional -> de um lado para outro, de cardapio para categoria -> categoria nao tem conhecimento de cardapio
     private Categoria categoria;
+
+    @ManyToMany(mappedBy = "cardapioList") // mappedBy -> esse relacionamento já está mapeado pela propriedade cardapioList na classe Ordem // entidade é o lado "espelho" da relação. -> quem manda é a ordem
+    private List<Ordem> ordemList;      // neste caso Ordem precisa ter visão de Cardapio // Lista de todas as ordens em que esse item de cardápio aparece.
+
 
     @Column(name = "data_de_registro")                                  // renomeando a tabela
     private LocalDateTime dataDeRegistro = LocalDateTime.now();         // dizendo que a data será ao instanciar
