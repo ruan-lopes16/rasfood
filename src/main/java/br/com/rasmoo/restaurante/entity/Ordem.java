@@ -3,6 +3,7 @@ package br.com.rasmoo.restaurante.entity;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -34,14 +35,21 @@ public class Ordem {
     obs.: um relacionamento Many to Many, pode ser representado(diagrama) como One to Many e Many to One
      */
 
-    @OneToMany
-    private List<OrdensCardapio> ordensCardapioList;    // neste caso OrdensCardapio precisa ter visão de Ordem // lista de itens do cardápio associados à essa ordem.
+    @OneToMany(mappedBy = "ordem")                                                      // quando se trata de relacionamento bidirecional, o mappedBy vai para o ToMany
+    private List<OrdensCardapio> ordensCardapioList = new ArrayList<>();                // neste caso OrdensCardapio precisa ter visão de Ordem // lista de itens do cardápio associados à essa ordem.
+    // quando se trata de um List ou Set, é uma boa prátrica já instânciá-la na declaração de atributos -> evita erros
 
     public Ordem() {
     }
 
     public Ordem(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    //
+    public void addOrdensCardapio(OrdensCardapio ordensCardapio){
+        ordensCardapio.setOrdem(this);                          // Define a Ordem a qual este item de cardápio pertence
+        this.ordensCardapioList.add(ordensCardapio);            // Adiciona o item de cardápio à lista interna da Ordem
     }
 
     public Integer getId() {

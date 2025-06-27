@@ -25,6 +25,7 @@ public class OrdensCardapio {
         this.quantidade = quantidade;
         this.cardapio = cardapio;
         this.ordem = ordem;
+        this.valor = cardapio.getValor(); // o valor será passado a partir da entidade Cardapio
     }
 
     public Integer getId() {
