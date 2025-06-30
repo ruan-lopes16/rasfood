@@ -32,6 +32,7 @@ public class OrdemService {
 
         clienteDao.cadastrar(ruan);
         ordemDao.cadastrar(ordem);
+        System.out.println(ordem.getOrdensCardapioList());      // exibindo ordem
 
         entityManager.getTransaction().commit();
         entityManager.close();

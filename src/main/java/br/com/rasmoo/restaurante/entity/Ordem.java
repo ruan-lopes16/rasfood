@@ -35,7 +35,16 @@ public class Ordem {
     obs.: um relacionamento Many to Many, pode ser representado(diagrama) como One to Many e Many to One
      */
 
-    @OneToMany(mappedBy = "ordem")                                                      // quando se trata de relacionamento bidirecional, o mappedBy vai para o ToMany
+    /*
+    ALL = realiza todas as operações em cascata
+    DETACH = executa no pai e no filho
+    MERGE = salva pai e filho, podendo já haver entidade gerenciada
+    PERSIST = cria pai e filho
+    REFRESH = atualiza entidade com operações do banco
+    REMOVE = propaga remoção entre pai e filho
+    */
+
+    @OneToMany(mappedBy = "ordem", cascade = CascadeType.ALL)                                                      // quando se trata de relacionamento bidirecional, o mappedBy vai para o ToMany
     private List<OrdensCardapio> ordensCardapioList = new ArrayList<>();                // neste caso OrdensCardapio precisa ter visão de Ordem // lista de itens do cardápio associados à essa ordem.
     // quando se trata de um List ou Set, é uma boa prátrica já instânciá-la na declaração de atributos -> evita erros
 
@@ -82,6 +91,14 @@ public class Ordem {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public List<OrdensCardapio> getOrdensCardapioList() {
+        return ordensCardapioList;
+    }
+
+    public void setOrdensCardapioList(List<OrdensCardapio> ordensCardapioList) {
+        this.ordensCardapioList = ordensCardapioList;
     }
 
     @Override
