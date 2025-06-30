@@ -25,7 +25,7 @@ public class OrdemService {
         ClienteDao clienteDao = new ClienteDao(entityManager);
         OrdemDao ordemDao = new OrdemDao(entityManager);
 
-        Cliente ruan = new Cliente("12345678900", "Ruan", "99988877");
+        Cliente ruan = new Cliente("12345678900", "Ruan");
         Ordem ordem = new Ordem(ruan);
         // Adiciona item ao pedido: produto com ID 1 e quantidade 2
         ordem.addOrdensCardapio(new OrdensCardapio(ordem, cardapioDao.consultarPorId(1), 2));
