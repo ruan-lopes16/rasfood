@@ -21,7 +21,7 @@ public class OrdensCardapio {
     public OrdensCardapio() {
     }
 
-    public OrdensCardapio(Integer quantidade, Cardapio cardapio, Ordem ordem) {
+    public OrdensCardapio(Ordem ordem, Cardapio cardapio, Integer quantidade) {
         this.quantidade = quantidade;
         this.cardapio = cardapio;
         this.ordem = ordem;
