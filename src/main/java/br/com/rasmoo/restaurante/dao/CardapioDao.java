@@ -3,6 +3,7 @@ package br.com.rasmoo.restaurante.dao;
 import br.com.rasmoo.restaurante.entity.Cardapio;
 
 import javax.persistence.EntityManager;
+import java.math.BigDecimal;
 import java.util.List;
 
 // classe DAO para fazendo o nosso CRUD
@@ -32,9 +33,13 @@ public class CardapioDao {
         // ou
         return this.entityManager.find(Cardapio.class, id);
     }
+    public List<Cardapio> consultarPorValor(final BigDecimal filtro){
+        String jpql = "SELECT c FROM Cardapio c WHERE c.valor = :valor";
+        return this.entityManager.createQuery(jpql,Cardapio.class).setParameter("valor",filtro).getResultList();
+    }
 
     // consultado TODOS os itens cadastrados
-    public List<Cardapio> consultarTodosElementos(){
+    public List<Cardapio> consultarTodos(){
         // criando query personalizada -> mais proximo ao SQL
         String sql = "SELECT c FROM Cardapio c"; // em JPQL -> é OO e se usa a entidade e não o nome dela. em SQL seria -> SELECT * FROM cardapio
         // passando query para o entitymanager

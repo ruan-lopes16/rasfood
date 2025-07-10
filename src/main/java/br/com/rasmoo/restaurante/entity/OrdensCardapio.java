@@ -6,27 +6,29 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "ordens_cardapio")
 public class OrdensCardapio {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @ManyToOne
     private Ordem ordem;
+
     @ManyToOne
     private Cardapio cardapio;
 
     @Column(name = "valor_de_registro")
     private BigDecimal valorDeRegistro;
+
     private Integer quantidade;
 
-    public OrdensCardapio() {
+    public OrdensCardapio( Cardapio cardapio, Integer quantidade) {
+        this.cardapio = cardapio;
+        this.quantidade = quantidade;
+        this.valorDeRegistro = cardapio.getValor();
     }
 
-    public OrdensCardapio(Ordem ordem, Cardapio cardapio, Integer quantidade) {
-        this.quantidade = quantidade;
-        this.cardapio = cardapio;
-        this.ordem = ordem;
-        this.valorDeRegistro = cardapio.getValor(); // o valorDeRegistro será passado a partir da entidade Cardapio
+    public OrdensCardapio() {
     }
 
     public Integer getId() {

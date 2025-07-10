@@ -1,16 +1,11 @@
 package br.com.rasmoo.restaurante.service.test;
 
 import br.com.rasmoo.restaurante.dao.CardapioDao;
-import br.com.rasmoo.restaurante.dao.ClienteDao;
-import br.com.rasmoo.restaurante.dao.OrdemDao;
-import br.com.rasmoo.restaurante.entity.Cliente;
-import br.com.rasmoo.restaurante.entity.Endereco;
-import br.com.rasmoo.restaurante.entity.Ordem;
-import br.com.rasmoo.restaurante.entity.OrdensCardapio;
 import br.com.rasmoo.restaurante.util.CargaDeDadosUtil;
 import br.com.rasmoo.restaurante.util.JPAUtil;
 
 import javax.persistence.EntityManager;
+import java.math.BigDecimal;
 
 public class OrdemService {
     public static void main(String[] args) {
@@ -23,23 +18,7 @@ public class OrdemService {
 
         // 3. Depois, criamos o cliente, ordem e itens da ordem
         CardapioDao cardapioDao = new CardapioDao(entityManager);
-        ClienteDao clienteDao = new ClienteDao(entityManager);
-        OrdemDao ordemDao = new OrdemDao(entityManager);
-
-        Endereco endereco = new Endereco("000000000","sem saída","apto 1001","Uberlândia","MG");
-        Cliente ruan = new Cliente("12345678900", "Ruan");
-        ruan.addEndereco(endereco);
-        Ordem ordem = new Ordem(ruan);
-        // Adiciona item ao pedido: produto com ID 1 e quantidade 2
-        ordem.addOrdensCardapio(new OrdensCardapio(ordem, cardapioDao.consultarPorId(1), 2));
-        ordem.addOrdensCardapio(new OrdensCardapio(ordem, cardapioDao.consultarPorId(2), 3)); // adicionando itens à ordem
-
-        clienteDao.cadastrar(ruan);
-        ordemDao.cadastrar(ordem);
-        System.out.println(ordem);      // exibindo ordem -> .getOrdensCardapioList() - não precisa necessáriamente desse atributo
-
-        entityManager.getTransaction().commit();
+        System.out.println("Lista de produtos por valor: " + cardapioDao.consultarPorValor(BigDecimal.valueOf(59.00)));
         entityManager.close();
-
     }
 }

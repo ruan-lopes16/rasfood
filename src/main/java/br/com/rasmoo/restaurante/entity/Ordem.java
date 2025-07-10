@@ -16,6 +16,7 @@ public class Ordem {
 
     @Column(name = "valor_total")
     private BigDecimal valorTotal = BigDecimal.ZERO;
+
     @Column(name = "data_de_criacao")
     private LocalDateTime dataDeCriacao = LocalDateTime.now();
 

@@ -26,15 +26,6 @@ public class Cardapio {
     @Column(name = "data_de_registro")                                  // renomeando a tabela
     private LocalDateTime dataDeRegistro = LocalDateTime.now();         // dizendo que a data será ao instanciar
 
-
-    public Cardapio(String nome, String descricao, boolean disponivel, BigDecimal valor, LocalDateTime dataDeRegistro) {
-        this.nome = nome;
-        this.descricao = descricao;
-        this.disponivel = disponivel;
-        this.valor = valor;
-        this.dataDeRegistro = dataDeRegistro;
-    }
-
     public Cardapio() {
         // JPA obriga ter um construtor vazio
     }
@@ -72,11 +63,11 @@ public class Cardapio {
         this.descricao = descricao;
     }
 
-    public boolean isDisponivel() {
+    public Boolean getDisponivel() {
         return disponivel;
     }
 
-    public void setDisponivel(boolean disponivel) {
+    public void setDisponivel(Boolean disponivel) {
         this.disponivel = disponivel;
     }
 
@@ -88,20 +79,20 @@ public class Cardapio {
         this.valor = valor;
     }
 
-    public LocalDateTime getDataDeRegistro() {
-        return dataDeRegistro;
-    }
-
-    public void setDataDeRegistro(LocalDateTime dataDeRegistro) {
-        this.dataDeRegistro = dataDeRegistro;
-    }
-
     public Categoria getCategoria() {
         return categoria;
     }
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public LocalDateTime getDataDeRegistro() {
+        return dataDeRegistro;
+    }
+
+    public void setDataDeRegistro(LocalDateTime dataDeRegistro) {
+        this.dataDeRegistro = dataDeRegistro;
     }
 
     @Override
@@ -117,3 +108,4 @@ public class Cardapio {
                 '}';
     }
 }
+
