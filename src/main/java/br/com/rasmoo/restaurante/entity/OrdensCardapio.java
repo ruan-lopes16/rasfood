@@ -15,7 +15,8 @@ public class OrdensCardapio {
     @ManyToOne
     private Cardapio cardapio;
 
-    private BigDecimal valor;
+    @Column(name = "valor_de_registro")
+    private BigDecimal valorDeRegistro;
     private Integer quantidade;
 
     public OrdensCardapio() {
@@ -25,7 +26,7 @@ public class OrdensCardapio {
         this.quantidade = quantidade;
         this.cardapio = cardapio;
         this.ordem = ordem;
-        this.valor = cardapio.getValor(); // o valor será passado a partir da entidade Cardapio
+        this.valorDeRegistro = cardapio.getValor(); // o valorDeRegistro será passado a partir da entidade Cardapio
     }
 
     public Integer getId() {
@@ -52,12 +53,12 @@ public class OrdensCardapio {
         this.cardapio = cardapio;
     }
 
-    public BigDecimal getValor() {
-        return valor;
+    public BigDecimal getValorDeRegistro() {
+        return valorDeRegistro;
     }
 
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
+    public void setValorDeRegistro(BigDecimal valorDeRegistro) {
+        this.valorDeRegistro = valorDeRegistro;
     }
 
     public Integer getQuantidade() {
@@ -72,9 +73,9 @@ public class OrdensCardapio {
     public String toString() {
         return "OrdensCardapio{" +
                 "id=" + id +
-                ", ordem=" + ordem +
+                // ", ordem=" + ordem +     // sempre será chamada pela classe pai
                 ", cardapio=" + cardapio +
-                ", valor=" + valor +
+                ", valorDeRegistro=" + valorDeRegistro +
                 ", quantidade=" + quantidade +
                 '}';
     }

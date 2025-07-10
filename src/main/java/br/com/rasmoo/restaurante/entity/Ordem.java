@@ -108,6 +108,7 @@ public class Ordem {
                 ", valorTotal=" + valorTotal +
                 ", dataDeCriacao=" + dataDeCriacao +
                 ", cliente=" + cliente +
+                ", ordensCardapioList=" + ordensCardapioList +
                 '}';
     }
 }
