@@ -23,10 +23,14 @@ public class OrdemService {
         OrdemDao ordemDao = new OrdemDao(entityManager);
         Ordem ordem = ordemDao.consultarPorId(2);
 
-        System.out.println(ordem.getValorTotal());
 
-        // System.out.println(ordemDao.consultarItensMaisVendidos());
+        System.out.println(ordemDao.consultarItensMaisVendidos());
+        System.out.println(ordem.getValorTotal());  // poderia esse item após o close, pois já foi carregado na linha 24
+
+
         entityManager.getTransaction().commit();
         entityManager.close();
+        System.out.println(ordem.getCliente().getNome());
+
     }
 }
