@@ -1,5 +1,6 @@
 package br.com.rasmoo.restaurante.dao;
 
+import br.com.rasmoo.restaurante.entity.Categoria;
 import br.com.rasmoo.restaurante.entity.Cliente;
 
 import javax.persistence.EntityManager;
@@ -22,7 +23,7 @@ public class ClienteDao {
     }
 
     public List<Cliente> consultarTodos() {
-        String jpql = "SELECT c FROM Categoria c";
+        String jpql = "SELECT c FROM Cliente c";
         return this.entityManager.createQuery(jpql,Cliente.class).getResultList();
     }
 

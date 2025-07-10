@@ -20,7 +20,7 @@ public class Ordem {
     @Column(name = "data_de_criacao")
     private LocalDateTime dataDeCriacao = LocalDateTime.now();
 
-    @ManyToOne // muitos pedidos para um Cliente
+    @ManyToOne(fetch = FetchType.LAZY) // muitos pedidos para um Cliente -> (fetch = FetchType.LAZY) -> só é mostrado ser invocado no código - usado em ToOne
     private Cliente cliente;
 
 //    @ManyToMany     // muitos cardapio(itens) para muitas Ordens - todo toMany precisa estar vinculado à uma lista(List<> ou Set<>)

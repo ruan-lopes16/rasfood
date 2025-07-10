@@ -17,7 +17,7 @@ public class Cardapio {
     private String descricao;
     private boolean disponivel;
     private BigDecimal valor;
-    @ManyToOne // relacionamento -> muitos para um - unidirecional -> de um lado para outro, de cardapio para categoria -> categoria nao tem conhecimento de cardapio
+    @ManyToOne(fetch = FetchType.LAZY) // relacionamento -> muitos para um - unidirecional -> de um lado para outro, de cardapio para categoria -> categoria nao tem conhecimento de cardapio
     private Categoria categoria;
 
 //    @ManyToMany(mappedBy = "cardapioList") // mappedBy -> esse relacionamento já está mapeado pela propriedade cardapioList na classe Ordem // entidade é o lado "espelho" da relação. -> quem manda é a ordem
