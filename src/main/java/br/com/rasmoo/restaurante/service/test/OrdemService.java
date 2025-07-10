@@ -32,6 +32,7 @@ public class OrdemService {
         Ordem ordem = new Ordem(ruan);
         // Adiciona item ao pedido: produto com ID 1 e quantidade 2
         ordem.addOrdensCardapio(new OrdensCardapio(ordem, cardapioDao.consultarPorId(1), 2));
+        ordem.addOrdensCardapio(new OrdensCardapio(ordem, cardapioDao.consultarPorId(2), 3)); // adicionando itens à ordem
 
         clienteDao.cadastrar(ruan);
         ordemDao.cadastrar(ordem);
