@@ -13,6 +13,9 @@ public class Cliente {
 
     private String nome;
 
+    @Embedded       // tomar cuidado! aqui estou indicando que está classe vai pegar os dados da outra
+    private Contato contato;
+
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<Endereco> enderecoList = new ArrayList<>();
 
@@ -28,6 +31,7 @@ public class Cliente {
         endereco.setCliente(this);
         this.enderecoList.add(endereco);
     }
+
 
     public String getCpf() {
         return cpf;
@@ -45,6 +49,14 @@ public class Cliente {
         this.nome = nome;
     }
 
+    public Contato getContato() {
+        return contato;
+    }
+
+    public void setContato(Contato contato) {
+        this.contato = contato;
+    }
+
     public List<Endereco> getEnderecoList() {
         return enderecoList;
     }
@@ -58,6 +70,7 @@ public class Cliente {
         return "Cliente{" +
                 "cpf='" + cpf + '\'' +
                 ", nome='" + nome + '\'' +
+                ", contato=" + contato +
                 ", enderecoList=" + enderecoList +
                 '}';
     }
