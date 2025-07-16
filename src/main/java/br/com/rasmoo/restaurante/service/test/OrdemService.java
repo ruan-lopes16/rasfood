@@ -30,7 +30,7 @@ public class OrdemService {
         System.out.println(ordemDao.consultarItensMaisVendidos());
         System.out.println(ordem.getValorTotal());  // poderia esse item após o close, pois já foi carregado na linha 24
         //System.out.println(clienteDao.consultarPorNome("COSTA"));
-        System.out.println(enderecoDao.consultarClientes("SP", "Sao Paulo", null)); // assim deixo TODOS que moram em Sao Paulo
+        System.out.println(enderecoDao.consultarClientes(null, null, "lapa")); // não me retorna nada, ngm mora lá
 
         entityManager.getTransaction().commit();
         entityManager.close();
