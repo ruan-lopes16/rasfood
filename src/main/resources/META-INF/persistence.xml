@@ -4,11 +4,11 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
     <persistence-unit name="rasfood" transaction-type="RESOURCE_LOCAL"> <!-- config de banco de dados-->
         <properties>
-            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" /> <!-- qual banco de dados iremos usar -->
-            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:rasfood" /> <!-- qual url do banco -> neste caso, url em memoria -->
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" /> <!-- qual banco de dados iremos usar -->
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/rasfood" /> <!-- qual url do banco -> neste caso, url em memoria -->
             <property name="javax.persistence.jdbc.user" value="rasmoo" /> <!-- usuario -->
-            <property name="javax.persistence.jdbc.password" value="" /> <!-- senha -->
-            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/> <!-- dialeto -> serve para identificar as queries de cada tipo de banco, neste caso h2 -->
+            <property name="javax.persistence.jdbc.password" value="senha123" /> <!-- senha -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/> <!-- dialeto -> serve para identificar as queries de cada tipo de banco, neste caso h2 -->
             <property name="hibernate.show_sql" value="true"/> <!-- visualização de logs -> queries que estão sendo criadas pelo JPA -->
             <property name="hibernate.hbm2ddl.auto" value="update"/> <!-- persistencia de dados de forma automatica e consultarPorId dados -->
             <property name="hibernate.format_sql" value="true"/> <!-- formatando logs no console -->
